@@ -22,12 +22,27 @@ def blog_index(request):
     if request.method == "GET":
         posts = Post.objects.all().order_by('created_on')
         serializers = PostSerializer(posts, many=True)
-        return JsonResponse({'posts': serializers.data}, safe=False, status=status.HTTP_200_OK)
+        return JsonResponse({'posts': serializers.data}, safe=False,
+                            status=status.HTTP_200_OK)
         # return Response(serializers.data)
     elif request.method == 'POST':
         post_data = JSONParser().parse(request)
         post_serializer = PostSerializer(data=post_data)
         if post_serializer.is_valid():
             post_serializer.save()
-            return JsonResponse(post_serializer.data, status=status.HTTP_201_CREATED)
-        return JsonResponse(post_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return JsonResponse(post_serializer.data,
+                                status=status.HTTP_201_CREATED)
+        return JsonResponse(post_serializer.errors,
+                            status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(["GET", "PUT", "DELETE"])
+@csrf_exempt
+def post_detail(request, post_id):
+    try:
+        post = Post.objects.get(pk=post_id)
+    except Post.DoesNotExist:
+        return JsonResponse({'message': 'Post não existe'},
+                            status=status.HTTP_404_NOT_FOUND)
+    if request.method == "GET":
+        post_serializer = PostSerializer(post)
+        return JsonResponse(post_serializer.data)
