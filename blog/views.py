@@ -46,3 +46,15 @@ def post_detail(request, post_id):
     if request.method == "GET":
         post_serializer = PostSerializer(post)
         return JsonResponse(post_serializer.data)
+    elif request.method == "PUT":
+        post_data = JSONParser().parse(request)
+        post_serializer = PostSerializer(post, data=post_data)
+        if post_serializer.is_valid():
+            post_serializer.save()
+            return JsonResponse(post_serializer.data)
+        return JsonResponse(post_serializer.errors,
+                            status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == "DELETE":
+        post.delete()
+        return JsonResponse({'message': 'Post deletado com sucesso.'},
+                            status=status.HTTP_204_NO_CONTENT)
