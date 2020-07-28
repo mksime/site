@@ -1,5 +1,3 @@
-import json
-
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -16,8 +14,16 @@ from .serializers import PostSerializer, CommentSerializer
 
 # Create your views here.
 
+@api_view(["GET"])
+@csrf_exempt
+@permission_classes([IsAuthenticated])
+def welcome(request):
+    content = {"message": "Bem-vindo, usuário!"}
+    return JsonResponse(content)
+
 @api_view(["GET", "POST"])
 @csrf_exempt
+@permission_classes([IsAuthenticated])
 def blog_index(request):
     if request.method == "GET":
         posts = Post.objects.all().order_by('created_on')
@@ -37,6 +43,7 @@ def blog_index(request):
 
 @api_view(["GET", "PUT", "DELETE"])
 @csrf_exempt
+@permission_classes([IsAuthenticated])
 def post_detail(request, post_id):
     try:
         post = Post.objects.get(pk=post_id)

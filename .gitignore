@@ -4,3 +4,4 @@ migrations/
 __pycache__
 secret_settings.py
 portfolio/secret_settings.py
+Session.vim
