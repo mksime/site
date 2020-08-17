@@ -15,24 +15,25 @@ from .serializers import PostSerializer, CommentSerializer
 # Create your views here.
 
 @api_view(["GET"])
-@csrf_exempt
-@permission_classes([IsAuthenticated])
+# @csrf_exempt
+# @permission_classes([IsAuthenticated])
 def welcome(request):
     content = {"message": "Bem-vindo, usuário!"}
     return JsonResponse(content)
 
 @api_view(["GET", "POST"])
-@csrf_exempt
-@permission_classes([IsAuthenticated])
+# @csrf_exempt
+# @permission_classes([IsAuthenticated])
 def blog_index(request):
     if request.method == "GET":
         posts = Post.objects.all().order_by('created_on')
         serializers = PostSerializer(posts, many=True)
-        return JsonResponse({'posts': serializers.data}, safe=False,
+        return JsonResponse(serializers.data, safe=False,
                             status=status.HTTP_200_OK)
         # return Response(serializers.data)
     elif request.method == 'POST':
         post_data = JSONParser().parse(request)
+        print("post é ", post_data)
         post_serializer = PostSerializer(data=post_data)
         if post_serializer.is_valid():
             post_serializer.save()
@@ -42,8 +43,8 @@ def blog_index(request):
                             status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(["GET", "PUT", "DELETE"])
-@csrf_exempt
-@permission_classes([IsAuthenticated])
+# @csrf_exempt
+# @permission_classes([IsAuthenticated])
 def post_detail(request, post_id):
     try:
         post = Post.objects.get(pk=post_id)
