@@ -26,7 +26,7 @@ def welcome(request):
 # @permission_classes([IsAuthenticated])
 def blog_index(request):
     if request.method == "GET":
-        posts = Post.objects.all().order_by('created_on')
+        posts = Post.objects.all().order_by('-created_on')
         serializers = PostSerializer(posts, many=True)
         return JsonResponse(serializers.data, safe=False,
                             status=status.HTTP_200_OK)

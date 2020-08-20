@@ -1,10 +1,26 @@
-<table border="1">
+<!--<table border="1">
   <tr *ngFor="let post of posts">
     <td>{{post.id}}</td>
     <td>{{post.title}}</td>
     <td>{{post.body}}</td>
   </tr>
-</table>
-
-<app-add-post></app-add-post>
-
+</table>-->
+<div fxLayout="row wrap" fxLayoutAlign="start center" style="padding: 2%;"> 
+  <ng-container *ngFor="let post of posts; index as i">
+    <mat-card fxFlex="0 1 calc(32% - 11px)"
+    fxFlex.lt-md="0 1 calc(50% - 11px)"
+    fxFlex.lt-sm="100%"
+    style="margin: 0.5%;">
+      <mat-card-header>
+        <mat-card-title>{{ posts[i].title }}</mat-card-title>
+        <mat-card-subtitle>{{ posts[i].created_on }}</mat-card-subtitle>
+      </mat-card-header>
+  
+      <mat-card-content>
+        <p>
+          {{ posts[i].body }}
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+</div>

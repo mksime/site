@@ -27,10 +27,10 @@ export class PostService {
 
   getPostById(id: number): Observable<Post[]> {
     return this.httpClient.get<Post[]>(`${this.apiUrl}getposts/${id}`)
-     .pipe(
+      .pipe(
        retry(2),
        catchError(this.handleError)
-    )
+      )
   }
 
   savePost(post: Post): Observable<Post[]> {
@@ -38,7 +38,23 @@ export class PostService {
      .pipe(
        retry(2),
        catchError(this.handleError)
-    )
+      )
+  }
+
+  updatePost(post: Post): Observable<Post[]> {
+    return this.httpClient.put<Post[]>(`${this.apiUrl}editposts/${post.id}`, JSON.stringify(post), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  deletePost(post: Post) {
+    return this.httpClient.delete<Post[]>(`${this.apiUrl}deleteposts/${post.id}`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
   }
   
   handleError(error: HttpErrorResponse) {
