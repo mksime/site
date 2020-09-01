@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 import { ActivatedRoute, Router } from '@angular/router'
 import { Post } from 'src/app/models/post'
+
 @Component({
   selector: 'app-post-detail',
   templateUrl: './post-detail.component.html',

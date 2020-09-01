@@ -9,20 +9,26 @@ import { AppComponent } from './app.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { AboutComponent } from './components/about/about.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { LocalDateTimePipe } from './pipe/local-date-time.pipe';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddPostComponent,
     PostListComponent,
-    PostDetailComponent
+    PostDetailComponent,
+    LocalDateTimePipe,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +40,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatTabsModule
   ],
-  providers: [],
+  providers: [LocalDateTimePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,24 +1,34 @@
 <div class="page">
     <mat-toolbar color="primary">
-      <button mat-icon-button color="basic" aria-label="Example icon button with a menu icon">
+      <!-- <button mat-icon-button color="basic" aria-label="Example icon button with a menu icon">
         <mat-icon>menu</mat-icon>
-      </button>
-      <span>My App</span>
+      </button> -->
+      <span>Marcelo Kenji Sime</span>
       <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+
+      <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
         <mat-icon>favorite</mat-icon>
       </button>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon>share</mat-icon>
-      </button>
+      </button> -->
+      <nav mat-tab-nav-bar>
+        <a mat-tab-link
+          *ngFor="let link of navLinks"
+          [routerLink]="link.link"
+          routerLinkActive #rla="routerLinkActive"
+          [active]="rla.isActive">
+          {{link.label}}
+        </a>
+      </nav>
     </mat-toolbar>
 
     <router-outlet></router-outlet>
-
-    <footer class="footer">
+      
+    <!-- <footer class="footer">
         <mat-toolbar style="bottom:0px"  color="primary">
           <span>My App</span>
           <span class="example-spacer"></span>
         </mat-toolbar>
-    </footer>
+    </footer> -->
 </div>
