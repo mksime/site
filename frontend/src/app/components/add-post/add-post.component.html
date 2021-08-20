@@ -5,7 +5,7 @@
         <div class="form-group">
             <label for="title">Título</label>
             <input type="text" [(ngModel)]="post.title" id="title" name="title" #title="ngModel" required class="form-control"
-            [ngClass]="{ 'is-invalid': f.submitted && title.invalid }" placeholder="Digite o modelo">
+            [ngClass]="{ 'is-invalid': f.submitted && title.invalid }">
             <div *ngIf="f.submitted && title.invalid" class="invalid-feedback">
                 <div *ngIf="title.errors.required">Título é obrigatório</div>
             </div>
@@ -13,9 +13,9 @@
         <div class="form-group">
             <label for="body">Texto</label>
             <input type="text" [(ngModel)]="post.body" id="body" name="body" #body="ngModel" required class="form-control"
-            [ngClass]="{ 'is-invalid': f.submitted && body.invalid }" placeholder="Digite a cor">
+            [ngClass]="{ 'is-invalid': f.submitted && body.invalid }">
             <div *ngIf="f.submitted && body.invalid" class="invalid-feedback">
-                <div *ngIf="body.errors.required">Texto é obrigatória</div>
+                <div *ngIf="body.errors.required">Texto é obrigatório</div>
             </div>
         </div>
         <button type="submit" class="btn btn-primary btn-add-post">Salvar</button>

@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from "rxjs/operators";
 import { Post } from "../models/post";
+import { AuthService } from "./auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +12,17 @@ import { Post } from "../models/post";
 export class PostService {
   private apiUrl = 'http://localhost:8000/blog/';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  // httpOptions = {
+  //   headers: new HttpHeaders({ 
+  //     'Content-Type': 'application/json',
+  //     'Authorization': 'JWT '.concat(this.authService.token)
+  //   })
+  // };
 
   getPost(): Observable<Post[]> {
-    return this.httpClient.get<Post[]>(`${this.apiUrl}getposts`)
+    return this.httpClient.get<Post[]>(`${this.apiUrl}getposts/`)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -34,7 +38,9 @@ export class PostService {
   }
 
   savePost(post: Post): Observable<Post[]> {
-    return this.httpClient.post<Post[]>(`${this.apiUrl}getposts/`, JSON.stringify(post), this.httpOptions)
+    // console.log(this.httpOptions);
+    
+    return this.httpClient.post<Post[]>(`${this.apiUrl}createpost/`, JSON.stringify(post)) //, this.httpOptions)
      .pipe(
        retry(2),
        catchError(this.handleError)
@@ -42,7 +48,7 @@ export class PostService {
   }
 
   updatePost(post: Post): Observable<Post[]> {
-    return this.httpClient.put<Post[]>(`${this.apiUrl}editposts/${post.id}`, JSON.stringify(post), this.httpOptions)
+    return this.httpClient.put<Post[]>(`${this.apiUrl}editposts/${post.id}`, JSON.stringify(post)) //, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -50,7 +56,7 @@ export class PostService {
   }
 
   deletePost(post: Post) {
-    return this.httpClient.delete<Post[]>(`${this.apiUrl}deleteposts/${post.id}`, this.httpOptions)
+    return this.httpClient.delete<Post[]>(`${this.apiUrl}deleteposts/${post.id}`) //, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)

@@ -25,7 +25,14 @@ export class PostDetailComponent implements OnInit {
   getPost(id) {
     this.postService.getPostById(id).subscribe((posts: Post[]) => {
       this.posts = posts;
-      console.log(this.posts);
+      // console.log(this.posts);
     });  
+  }
+
+  updatePost (post) {
+    this.postService.updatePost(post).subscribe(() => {
+      this.post = post;
+    });
+
   }
 }
