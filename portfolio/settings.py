@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from datetime import timedelta
 from .secret_settings import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -21,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
@@ -29,6 +30,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    # 'blog',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -37,17 +39,21 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'blog.apps.BlogConfig',
+    'cursos.apps.CursosConfig',
+    'projetos.apps.ProjetosConfig',
     'corsheaders',
-#    'rest_framework.authtoken', Autenticação
-#    'rest_auth',
-#    'django.contrib.sites',
-#    'allauth',
-#    'allauth.account',
-#    'rest_auth.registration',
+    # 'rest_framework.authtoken', # Autenticação
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'rest_auth',
+    'rest_auth.registration',
 ]
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# SITE_ID = 1
+# Allauth
+SITE_ID = 1
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -84,21 +90,10 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'testdb',
-        'USER': 'mkenji',
-        'PASSWORD': '123',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -126,18 +121,29 @@ CORS_ORIGIN_WHITELIST = (
 )
 
 # Autenticação
-# REST_FRAMEWORK = {
-#     # Authentication Scheme
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'rest_framework.authentication.BasicAuthentication',
-#         'rest_framework.authentication.SessionAuthentication',
-#         'rest_framework.authentication.TokenAuthentication',
-#     ),
-#     # Permission Policies
-#     'DEFAULT_PERMISSION_CLASSES': [
-#         'rest_framework.permissions.IsAuthenticated',
-#     ]
-# }
+REST_FRAMEWORK = {
+    # Permission Policies
+    'DEFAULT_PERMISSION_CLASSES': (
+        # 'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',
+    ),
+    # Authentication Scheme
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
+    ),
+    'NON_FIELD_ERRORS_KEY': 'global',
+}
+
+# JWT
+SIMPLE_JWT = {
+    'ROTATE_REFRESH_TOKENS': True,
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=2),
+}
+
+# JWT settings
+REST_USE_JWT = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -157,3 +163,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

@@ -1,0 +1,11 @@
+from django.db import models
+
+class Projeto(models.Model):
+    
+    title = models.CharField(max_length=255)
+    body = models.TextField()
+    data_projeto = models.TextField()
+    disponivel = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
+    

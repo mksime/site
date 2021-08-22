@@ -1,5 +1,5 @@
 ### Django ###
-venv/
+myenv/
 migrations/
 *.pyc
 __pycache__
@@ -24,6 +24,7 @@ bower_components/
 
 # IDEs and editors
 .idea/
+.vscode/
 
 # misc
 .sass-cache/

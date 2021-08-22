@@ -25,7 +25,7 @@ import { ListComponent } from './components/list/list.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LogoutComponent } from './components/logout/logout.component';
-import { CursosListComponent } from './src/app/components/cursos-list/cursos-list.component';
+import { CursoListComponent } from './components/curso-list/curso-list.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import { CursosListComponent } from './src/app/components/cursos-list/cursos-lis
     LoginComponent,
     SignupComponent,
     LogoutComponent,
-    CursosListComponent,
+    CursoListComponent,
   ],
   imports: [
     BrowserModule,

@@ -24,19 +24,21 @@ export class AppComponent {
             label: 'Sobre',
             link: './about',
             index: 0
-        }, {
-            label: 'Blog',
-            link: './posts',
-            index: 1
-        }, {
+        }, 
+        // {
+        //     label: 'Blog',
+        //     link: './posts',
+        //     index: 1
+        // }, 
+        {
             label: 'Projetos',
             link: './projects',
             index: 2
-        },//  {
-        //     label: this.log_label,
-        //     link: this.log_link,
-        //     index: 3
-        // },
+        }, {
+            label: 'Cursos',
+            link: '/cursos',
+           index: 3
+        },
     ];
   }
 
