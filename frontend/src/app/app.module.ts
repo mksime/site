@@ -26,6 +26,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { CursoListComponent } from './components/curso-list/curso-list.component';
+import { ProjetoListComponent } from './components/projeto-list/projeto-list.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { CursoListComponent } from './components/curso-list/curso-list.component
     SignupComponent,
     LogoutComponent,
     CursoListComponent,
+    ProjetoListComponent,
   ],
   imports: [
     BrowserModule,

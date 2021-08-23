@@ -19,10 +19,9 @@ export class CursoListComponent implements OnInit {
   }
 
   getCursos(): void {
-    var a = this.cursoService.getCurso().subscribe((cursos: Curso[]) => {
+    this.cursoService.getCurso().subscribe((cursos: Curso[]) => {
       this.cursos = cursos;
     });
-    console.log(a);
     
   }
 }

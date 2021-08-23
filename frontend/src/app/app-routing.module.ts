@@ -9,10 +9,12 @@ import { SignupComponent } from "./components/signup/signup.component";
 import { AuthGuard } from './services/auth.service';
 import { LogoutComponent } from './components/logout/logout.component';
 import { CursoListComponent } from './components/curso-list/curso-list.component';
+import { ProjetoListComponent } from './components/projeto-list/projeto-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
   { path: 'cursos', component: CursoListComponent },
+  { path: 'projetos', component: ProjetoListComponent },
   { path: 'posts', component: PostListComponent },
   { path: 'post/:id', component: PostDetailComponent },
   // { path: 'addposts', component: AddPostComponent },

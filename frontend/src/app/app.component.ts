@@ -32,7 +32,7 @@ export class AppComponent {
         // }, 
         {
             label: 'Projetos',
-            link: './projects',
+            link: './projetos',
             index: 2
         }, {
             label: 'Cursos',
