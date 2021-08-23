@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import dj_database_url
+import os
 
 from pathlib import Path
 from datetime import timedelta
-from .secret_settings import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,6 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
+
+SECRET_KEY = os.getenv('SECRET_KEY', 'Optional default value')
 
 SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
