@@ -35,7 +35,6 @@ class CursoDetail(APIView):
     
     def get(self, request, curso_id, format=None):
         curso = self.get_object(pk=curso_id)
-        # curso = Curso.objects.get_object(pk=curso)
         serializer = CursoSerializer(curso)
 
         return Response(serializer.data)
