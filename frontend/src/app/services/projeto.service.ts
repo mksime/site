@@ -10,7 +10,7 @@ import { AuthService } from './auth.service';
 })
 
 export class ProjetoService {
-  private apiUrl = 'http://localhost:8000/projetos/';
+  private apiUrl = 'https://marceloksime.herokuapp.com/projetos/';
 
   constructor(private httpClient: HttpClient, private authService: AuthService) { }
 

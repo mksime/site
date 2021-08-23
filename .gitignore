@@ -6,6 +6,7 @@ __pycache__
 secret_settings.py
 portfolio/secret_settings.py
 Session.vim
+frontend/
 
 # Created by https://www.toptal.com/developers/gitignore/api/angular
 # Edit at https://www.toptal.com/developers/gitignore?templates=angular

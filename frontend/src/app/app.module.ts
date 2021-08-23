@@ -27,6 +27,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { CursoListComponent } from './components/curso-list/curso-list.component';
 import { ProjetoListComponent } from './components/projeto-list/projeto-list.component';
+import { CursoDetailComponent } from './components/curso-detail/curso-detail.component';
+import { ProjetoDetailComponent } from './components/projeto-detail/projeto-detail.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { ProjetoListComponent } from './components/projeto-list/projeto-list.com
     LogoutComponent,
     CursoListComponent,
     ProjetoListComponent,
+    CursoDetailComponent,
+    ProjetoDetailComponent,
   ],
   imports: [
     BrowserModule,

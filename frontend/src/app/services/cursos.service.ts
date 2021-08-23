@@ -10,7 +10,7 @@ import { AuthService } from './auth.service';
 })
 
 export class CursosService {
-  private apiUrl = 'http://localhost:8000/cursos/';
+  private apiUrl = 'https://marceloksime.herokuapp.com/cursos';
 
   constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
@@ -22,6 +22,14 @@ export class CursosService {
       )
   }
 
+  getCursoById(id: number): Observable<Curso[]> {
+    return this.httpClient.get<Curso[]>(`${this.apiUrl}/${id}`)
+      .pipe(
+       retry(2),
+       catchError(this.handleError)
+      )
+  }
+  
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

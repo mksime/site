@@ -10,11 +10,15 @@ import { AuthGuard } from './services/auth.service';
 import { LogoutComponent } from './components/logout/logout.component';
 import { CursoListComponent } from './components/curso-list/curso-list.component';
 import { ProjetoListComponent } from './components/projeto-list/projeto-list.component';
+import { CursoDetailComponent } from './components/curso-detail/curso-detail.component';
+import { ProjetoDetailComponent } from './components/projeto-detail/projeto-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
   { path: 'cursos', component: CursoListComponent },
+  { path: 'curso/:id', component: CursoListComponent },
   { path: 'projetos', component: ProjetoListComponent },
+  { path: 'projeto/:id', component: ProjetoDetailComponent },
   { path: 'posts', component: PostListComponent },
   { path: 'post/:id', component: PostDetailComponent },
   // { path: 'addposts', component: AddPostComponent },
