@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['marceloksime.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'marceloksime.herokuapp.com']
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'Optional default value')
 
@@ -104,6 +104,7 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
+#         
 #         'HOST': 'localhost',
 #         'PORT': '5432',
 #     }
