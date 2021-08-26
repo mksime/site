@@ -1,8 +1,8 @@
-from django.shortcuts import render
-
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from django.http import Http404
 
 from .models import Projeto
 from .serializers import ProjetoSerializer
@@ -20,6 +20,7 @@ class ProjetoList(APIView):
         serializer = ProjetoSerializer(projetos, many=True)
 
         return Response(serializer.data)
+
 
 class ProjetoDetail(APIView):
 

@@ -1,5 +1,3 @@
-# from django.shortcuts import render
-
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -18,7 +16,6 @@ class CursoList(APIView):
             raise Http404
     
     def get(self, request, format=None):
-        # cursos = Curso.objects.all()
         cursos = self.get_object()
         serializer = CursoSerializer(cursos, many=True)
 

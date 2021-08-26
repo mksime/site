@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import dj_database_url
 import os
-import sys
 
 from pathlib import Path
 from datetime import timedelta
@@ -189,7 +188,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Extra places for collectstatic to find static files.
-# STATICFILES_DIRS = (
-#     None,
-# )
