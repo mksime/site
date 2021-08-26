@@ -190,16 +190,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    None,
 )
-
-if __name__ == "__main__":
-    # select settings according to environment.
-    if os.environ.get('ON_HEROKU'):
-        os.environ.setdefault(
-            "DJANGO_SETTINGS_MODULE", "nightreads.settings.heroku")
-    else:
-        os.environ.setdefault(
-            "DJANGO_SETTINGS_MODULE", "nightreads.settings.dev")
-
-    from django.core.management import execute_from_command_line
