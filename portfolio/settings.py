@@ -12,10 +12,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import dj_database_url
 import os
+import sys
 
 from pathlib import Path
 from datetime import timedelta
-
+    
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -186,3 +187,14 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+if __name__ == "__main__":
+    # select settings according to environment.
+    if os.environ.get('ON_HEROKU'):
+        os.environ.setdefault(
+            "DJANGO_SETTINGS_MODULE", "nightreads.settings.heroku")
+    else:
+        os.environ.setdefault(
+            "DJANGO_SETTINGS_MODULE", "nightreads.settings.dev")
+
+    from django.core.management import execute_from_command_line
