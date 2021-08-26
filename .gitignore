@@ -1,6 +1,6 @@
 ### Django ###
 myenv/
-migrations/
+# migrations/
 *.pyc
 __pycache__
 secret_settings.py
