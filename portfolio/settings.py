@@ -189,6 +189,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    None,
-)
+# STATICFILES_DIRS = (
+#     None,
+# )
