@@ -136,8 +136,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:8081',
-    'http://marceloksime.s3-website-sa-east-1.amazonaws.com/'
+    'http://marceloksime.s3-website-sa-east-1.amazonaws.com',
+    # 'http://localhost:8081',
 )
 
 # Autenticação
