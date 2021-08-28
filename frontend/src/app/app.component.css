@@ -18,6 +18,16 @@ a:hover {
   text-decoration: none;
 }
 
+.mat-sidenav-container{
+  /* background-color: lightskyblue; */
+  min-height: 93vh !important;
+}
+
+/* .mat-sidenav-content{
+  font-size: 200%;
+  text-align: center;
+} */
+
 /* .mat-tab-group.mat-primary .mat-ink-bar,.mat-tab-nav-bar.mat-primary .mat-ink-bar {
   color: #2C702A;
 } */

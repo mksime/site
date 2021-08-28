@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatSidenavModule } from "@angular/material/sidenav";
 
 import { AppComponent } from './app.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
@@ -58,7 +59,8 @@ import { ProjetoDetailComponent } from './components/projeto-detail/projeto-deta
     MatButtonModule,
     MatCardModule,
     FlexLayoutModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSidenavModule,
   ],
   providers: [
     LocalDateTimePipe,

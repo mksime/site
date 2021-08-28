@@ -14,9 +14,9 @@ import { CursoDetailComponent } from './components/curso-detail/curso-detail.com
 import { ProjetoDetailComponent } from './components/projeto-detail/projeto-detail.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path: '', redirectTo: 'about', pathMatch: 'full' },
   { path: 'cursos', component: CursoListComponent },
-  { path: 'curso/:id', component: CursoListComponent },
+  { path: 'curso/:id', component: CursoDetailComponent },
   { path: 'projetos', component: ProjetoListComponent },
   { path: 'projeto/:id', component: ProjetoDetailComponent },
   { path: 'posts', component: PostListComponent },

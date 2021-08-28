@@ -1,36 +1,41 @@
-<div class="page">
-    <mat-toolbar color="primary">
-      <!-- <button mat-icon-button color="basic" aria-label="Example icon button with a menu icon">
+<div>
+  <mat-toolbar color="primary">
+    <div fxShow="true" fxHide.gt-sm="true">
+      <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
-      </button> -->
-      <span>Marcelo Kenji Sime</span>
-      <span class="example-spacer"></span>
-
-      <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
       </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-      </button> -->
+    </div>
+
+    <a mat-button class="companyName" routerLink="/">
+      <span>
+        <h2>Marcelo Kenji Sime</h2>
+      </span>
+    </a>
+    <span class="example-spacer"></span>
+    <div fxShow="true" fxHide.lt-md="true">
       <nav mat-tab-nav-bar>
-        <a mat-tab-link
-          *ngFor="let link of navLinks"
-          [routerLink]="link.link"
-          routerLinkActive #rla="routerLinkActive"
-          [active]="rla.isActive">
+        <a mat-tab-link *ngFor="let link of navLinks" [routerLink]="link.link " routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
           {{link.label}}
         </a>
       </nav>
-      <!-- <button (click)="logout()">deslogar</button> -->
-      <!-- <mat-ink-bar class="mat-ink-bar" style="visibility: visible; left: 0px; width: 160px;"></mat-ink-bar> -->
-    </mat-toolbar>
+    </div>
 
-    <router-outlet></router-outlet>
-      
-    <!-- <footer class="footer">
-        <mat-toolbar style="bottom:0px"  color="primary">
-          <span>My App</span>
-          <span class="example-spacer"></span>
-        </mat-toolbar>
-    </footer> -->
+  </mat-toolbar>
+  <mat-sidenav-container fxFlexFill class="example-container">
+
+    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
+      <div fxLayout="column">
+        <nav mat-tab-nav-bar *ngFor="let link of navLinks">
+          <a mat-tab-link [routerLink]="link.link" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive"
+            (click)="sidenav.toggle()">
+            {{link.label}}
+          </a>
+        </nav>
+      </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content fxFlexFill>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

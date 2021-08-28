@@ -10,7 +10,7 @@ import { AuthService } from './auth.service';
 })
 
 export class ProjetoService {
-  private apiUrl = 'https://marceloksime.herokuapp.com/projetos/';
+  private apiUrl = 'https://marceloksime.herokuapp.com/projetos';
 
   constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
@@ -19,6 +19,14 @@ export class ProjetoService {
       .pipe(
         retry(2),
         catchError(this.handleError)
+      )
+  }
+
+  getProjetoById(id: number): Observable<Projeto[]> {
+    return this.httpClient.get<Projeto[]>(`${this.apiUrl}/${id}`)
+      .pipe(
+       retry(2),
+       catchError(this.handleError)
       )
   }
 
