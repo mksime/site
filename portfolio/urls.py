@@ -26,7 +26,7 @@ from django.views.static import serve
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls')),
+    # path('blog/', include('blog.urls')),
     path('cursos/', include('cursos.urls')),
     path('projetos/', include('projetos.urls')),
     # path('api-auth/', include('rest_framework.urls')),
