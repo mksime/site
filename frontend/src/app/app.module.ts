@@ -2,14 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
-import { AppComponent } from './app.component';
-import { AddPostComponent } from './components/add-post/add-post.component';
-import { PostListComponent } from './components/post-list/post-list.component';
-import { PostDetailComponent } from './components/post-detail/post-detail.component';
-import { AboutComponent } from './components/about/about.component';
+import { AuthService, AuthInterceptor, AuthGuard } from './services/auth.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -21,6 +16,18 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
+import { AppComponent } from './app.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
+import { PostListComponent } from './components/post-list/post-list.component';
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { AboutComponent } from './components/about/about.component';
+import { ListComponent } from './components/list/list.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { CursoListComponent } from './components/curso-list/curso-list.component';
+import { ProjetoListComponent } from './components/projeto-list/projeto-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +35,13 @@ import { MatCardModule } from '@angular/material/card';
     PostListComponent,
     PostDetailComponent,
     LocalDateTimePipe,
-    AboutComponent
+    AboutComponent,
+    ListComponent,
+    LoginComponent,
+    SignupComponent,
+    LogoutComponent,
+    CursoListComponent,
+    ProjetoListComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +56,16 @@ import { MatCardModule } from '@angular/material/card';
     FlexLayoutModule,
     MatTabsModule
   ],
-  providers: [LocalDateTimePipe],
+  providers: [
+    LocalDateTimePipe,
+    AuthService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -21,7 +21,6 @@ export class PostListComponent implements OnInit {
   getPosts(): void {
     this.postService.getPost().subscribe((posts: Post[]) => {
       this.posts = posts;
-      console.log(this.posts);
     });
   }
 }
