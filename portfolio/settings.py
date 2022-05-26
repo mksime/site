@@ -137,7 +137,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:8081',
-    'https://marcelosime.herokuapp.com/'
+    'https://marcelosime.herokuapp.com'
 )
 
 # Autenticação
