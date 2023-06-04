@@ -8,7 +8,8 @@ secret_settings.py
 portfolio/secret_settings.py
 Session.vim
 .frontend/
-
+*.dump
+*.txt
 # Created by https://www.toptal.com/developers/gitignore/api/angular
 # Edit at https://www.toptal.com/developers/gitignore?templates=angular
 
